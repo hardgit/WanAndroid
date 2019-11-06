@@ -72,6 +72,8 @@ class HomePresenter(var activity: FragmentActivity? = null):BasePresenter(){
             RequestManager.execute(activity,RetrofitManager.create(RetrofitServices::class.java).addCollect(id),object:
                 BaseObserver<Any>(){
                 override fun onSuccess(data: Any) {
+                    println( Thread.currentThread().name)
+
                     addCollectLD.postValue(position)
                 }
 
