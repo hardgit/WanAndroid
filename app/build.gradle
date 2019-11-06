@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+// Initializes a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+// Loads the keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+def static time() {
+    return new Date().format("yyyyMMddHHmm")
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    dexOptions {
+        // Sets the maximum number of DEX processes
+        // that can be started concurrently.
+        maxProcessCount 8
+        // Sets the maximum memory allocation pool size
+        // for the dex operation.
+        javaMaxHeapSize "4g"
+        // Enables Gradle to pre-dex library dependencies.
+        preDexLibraries true
+    }
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            // 清理无用资源
+            shrinkResources true
+            // 压缩优化
+            zipAlignEnabled true
+            // 支持本地化整理
+            pseudoLocalesEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile != null && outputFile.name.endsWith('release.apk')) {
+                    outputFileName = "WanAndroid_v${variant.versionName}_${time()}_release.apk"
+//                    }
+                }
+            }
+        }
+    }
+//    dataBinding {
+//        // DataBinding 开启
+//        enabled true
+//    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation rootProject.ext.dependencies["androidx_design"]
+    implementation rootProject.ext.dependencies["androidx_bottom_navigation_view_ex"]
+    implementation rootProject.ext.dependencies["retrofit2"]
+    implementation rootProject.ext.dependencies["retrofit2_gson"]
+    implementation rootProject.ext.dependencies["retrofit2_rxjava"]
+    implementation rootProject.ext.dependencies["rxjava2"]
+    implementation rootProject.ext.dependencies["rxjava2_rxandroid"]
+    implementation rootProject.ext.dependencies["okhttp3_interceptor"]
+    implementation rootProject.ext.dependencies["retrofit2"]
+    implementation rootProject.ext.dependencies["converter-scalars"]
+    implementation rootProject.ext.dependencies["liveDataBus"]
+    implementation rootProject.ext.dependencies["autodispose"]
+    implementation rootProject.ext.dependencies["multidex"]
+    implementation rootProject.ext.dependencies["banner"]
+    implementation rootProject.ext.dependencies["autosize"]
+    implementation rootProject.ext.dependencies["glide"]
+    implementation rootProject.ext.dependencies["base-recycler-helper"]
+    implementation rootProject.ext.dependencies["smartrefreshHeader"]
+    implementation rootProject.ext.dependencies["smartrefreshLayout"]
+    implementation rootProject.ext.dependencies["xpopup"]
+    implementation project(":libWebview")
+}

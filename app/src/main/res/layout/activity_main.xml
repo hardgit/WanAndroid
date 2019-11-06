@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".ui.MainActivity"
+        tools:ignore="MissingConstraints"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <com.android.mykotlinandroid.utils.NoScrollViewPage
+            android:id="@+id/mviewpage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/viewline">
+
+    </com.android.mykotlinandroid.utils.NoScrollViewPage>
+    <View
+            android:id="@+id/viewline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#EBEBEB"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation_View"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/bottom_navigation_View"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:itemTextColor="@color/app_selector_main_bottom_tint"
+            app:itemIconTint="@color/app_selector_main_bottom_tint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:labelVisibilityMode="labeled"
+            android:textSize="14sp"
+            app:menu="@menu/menu_bottom_navigation_view"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

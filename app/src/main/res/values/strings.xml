@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Z</string>
+
+
+    <string name="home">首页</string>
+    <string name="project">项目</string>
+    <string name="gps">导航</string>
+    <string name="vipcn">公众号</string>
+    <string name="my">我的</string>
+
+    <string name="login_title">登录</string>
+    <string name="register_title">注册</string>
+
+    <string name="notlogin">未登录</string>
+
+
+    <string name="my_collect">我的收藏</string>
+    <string name="app_exit">再按一次退出</string>
+
+
+    <string name="red_type">热门分类</string>
+
+</resources>

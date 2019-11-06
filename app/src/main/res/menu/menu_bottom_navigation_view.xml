@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+            android:id="@+id/item_bottom_1"
+            android:enabled="true"
+            android:icon="@mipmap/home"
+            android:title="@string/home"
+          />
+    <item
+            android:id="@+id/item_bottom_2"
+            android:icon="@mipmap/project"
+            android:title="@string/project"
+          />
+    <item
+            android:id="@+id/item_bottom_4"
+            android:icon="@mipmap/gps"
+            android:title="@string/gps"
+    />
+    <item
+            android:id="@+id/item_bottom_3"
+            android:icon="@mipmap/gzh"
+            android:title="@string/vipcn"
+            />
+    <item
+            android:id="@+id/item_bottom_5"
+            android:icon="@mipmap/my"
+            android:title="@string/my"
+    />
+    <!--公众号-->
+</menu>

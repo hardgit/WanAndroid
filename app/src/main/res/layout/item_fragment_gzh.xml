@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/fragment_item_background">
+
+    <TextView
+            android:id="@+id/gzh_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="玩Android"
+            android:textSize="30sp"
+            android:textColor="@color/flow_tag_color_select"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+</RelativeLayout>
