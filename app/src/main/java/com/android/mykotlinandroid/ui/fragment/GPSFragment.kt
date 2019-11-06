@@ -1,7 +1,6 @@
 package com.android.mykotlinandroid.ui.fragment
 
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.android.mykotlinandroid.R
 import com.android.mykotlinandroid.base.BaseFragment
@@ -9,7 +8,6 @@ import com.android.mykotlinandroid.base.BaseMvpFragment
 import com.android.mykotlinandroid.mvp.main.GpsPresenter
 import com.android.mykotlinandroid.mvp.response.Article
 import com.android.mykotlinandroid.utils.tablayout.VerticalTabLayout
-import com.jeremyliao.liveeventbus.LiveEventBus
 import kotlinx.android.synthetic.main.fragment_layout_gps.*
 
 /**

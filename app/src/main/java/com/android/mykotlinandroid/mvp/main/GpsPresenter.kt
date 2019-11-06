@@ -7,7 +7,6 @@ import com.android.mykotlinandroid.base.net.exception.ResponseException
 import com.android.mykotlinandroid.base.observer.BaseObserver
 import com.android.mykotlinandroid.http.RetrofitServices
 import com.android.mykotlinandroid.mvp.response.NavResponse
-import com.jeremyliao.liveeventbus.LiveEventBus
 
 /**
  * author : zf

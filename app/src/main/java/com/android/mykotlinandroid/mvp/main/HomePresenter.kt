@@ -10,7 +10,7 @@ import com.android.mykotlinandroid.http.RetrofitServices
 import com.android.mykotlinandroid.mvp.response.BannerResponse
 import com.android.mykotlinandroid.mvp.response.GZHDetailsResponse
 import com.android.mykotlinandroid.mvp.response.HomeListResponse
-import com.android.mykotlinandroid.ui.view.Contract
+import com.android.mykotlinandroid.mvp.response.ProjectViewpageResponse
 
 /**
  * author : zf
@@ -34,6 +34,8 @@ class HomePresenter(var activity: FragmentActivity? = null):BasePresenter(){
     /* 公众号详情列表 */
     val gzhDetailsResponse = MutableLiveData<GZHDetailsResponse>()
 
+    /* 公众号详情列表 */
+    val detailsCategoryResponse = MutableLiveData<List<ProjectViewpageResponse>>()
 
     /* 首页Banner数据集 */
     fun getHomeBanner(){
@@ -105,6 +107,24 @@ class HomePresenter(var activity: FragmentActivity? = null):BasePresenter(){
                 LoadingObserver<GZHDetailsResponse>(it) {
                 override fun onSuccess(data: GZHDetailsResponse) {
                     gzhDetailsResponse.postValue(data)
+                }
+
+                override fun onError(e: ResponseException) {
+
+                }
+
+            })
+        }
+    }
+
+
+    /* 项目类型列表详情 */
+    fun detailsCategory(activity: FragmentActivity?,pageNum:Int,cid:Int) {
+        activity?.let {
+            RequestManager.execute(activity, RetrofitManager.create(RetrofitServices::class.java).detailsCategory(pageNum,cid), object :
+                LoadingObserver<List<ProjectViewpageResponse>>(it) {
+                override fun onSuccess(data: List<ProjectViewpageResponse>) {
+                    detailsCategoryResponse.postValue(data)
                 }
 
                 override fun onError(e: ResponseException) {

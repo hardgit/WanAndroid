@@ -9,13 +9,11 @@ import com.android.mykotlinandroid.base.BaseActivity
 import com.android.mykotlinandroid.base.BaseMvpActivity
 import com.android.mykotlinandroid.http.ACTION_DATA_ID_KEY
 import com.android.mykotlinandroid.http.ACTION_TITLE
-import com.android.mykotlinandroid.mvp.main.GZhPresenter
 import com.android.mykotlinandroid.mvp.main.HomePresenter
 import com.android.mykotlinandroid.mvp.response.DataX
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.jeremyliao.liveeventbus.LiveEventBus
 import kotlinx.android.synthetic.main.activity_gzhdetails.*
-import kotlinx.android.synthetic.main.fragment_layout_home.*
 import kotlinx.android.synthetic.main.toolbar_layout.toolbar
 import kotlinx.android.synthetic.main.toolbar_layout.view.*
 

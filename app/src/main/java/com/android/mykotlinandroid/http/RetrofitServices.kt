@@ -61,5 +61,13 @@ interface RetrofitServices {
     /* 公众号列表 */
     @GET(HttpUrlConnect.GET_BJNEWS_ARTICLES)
     fun gzhDetails(@Path("id")id: Int,@Path("pageNum")pageNum:Int): Observable<NetResult<GZHDetailsResponse>>
+
+    /* 项目类型列表 */
+    @GET(HttpUrlConnect.GET_PROJECT_CATEGORY)
+    fun projectCategory(): Observable<NetResult<List<ProjectCategoryResponse>>>
+
+    /* 项目类型列表详情 */
+    @GET(HttpUrlConnect.GET_PROJECT_LIST)
+    fun detailsCategory(@Path("pageNum")pageNum: Int,@Query("cid")cid:Int): Observable<NetResult<List<ProjectViewpageResponse>>>
 }
 

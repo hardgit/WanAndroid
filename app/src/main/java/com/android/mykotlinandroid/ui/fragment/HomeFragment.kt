@@ -16,7 +16,6 @@ import com.android.mykotlinandroid.utils.image.BannerImageLoader
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.youth.banner.BannerConfig
-import kotlinx.android.synthetic.main.activity_gzhdetails.*
 import kotlinx.android.synthetic.main.banner_layout.view.*
 import kotlinx.android.synthetic.main.fragment_layout_home.*
 

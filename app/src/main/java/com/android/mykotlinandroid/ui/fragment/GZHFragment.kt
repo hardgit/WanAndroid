@@ -2,18 +2,14 @@ package com.android.mykotlinandroid.ui.fragment
 
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
 import com.android.mykotlinandroid.R
 import com.android.mykotlinandroid.adapter.GZHAdapter
 import com.android.mykotlinandroid.base.BaseActivity
-import com.android.mykotlinandroid.base.BaseFragment
 import com.android.mykotlinandroid.base.BaseMvpFragment
 import com.android.mykotlinandroid.mvp.main.GZhPresenter
 import com.android.mykotlinandroid.mvp.response.GZHResponse
 import com.android.mykotlinandroid.ui.activity.GZHDetailsActivity
-import com.android.mykotlinandroid.utils.ToastUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import kotlinx.android.synthetic.main.fragment_layout_gzh.*
 
