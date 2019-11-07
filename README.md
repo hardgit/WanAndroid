@@ -12,10 +12,8 @@ MVP<br>
 Retrofit<br>
 Rxjava<br>
 LiveEventBus<br>
-SmartRefreshLayout<br>
-BaseRecyclerViewAdapterHelper<br>
-Glide<br>
 Autodispose<br>
-autosize<br>
+Autosize<br>
+
 
 本项目API全部来自https://www.wanandroid.com/  
