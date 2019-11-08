@@ -10,12 +10,12 @@
 
 ## 项目主要架构
 
-**MVP
-Retrofit
-Rxjava
-LiveEventBus
-Autodispose
-Autosize**
+**MVP<br>
+Retrofit<br>
+Rxjava<br>
+LiveEventBus<br>
+Autodispose<br>
+Autosize<br>**
 
 ## API
 本项目所有API均来自  [玩Android](https://www.wanandroid.com/)
