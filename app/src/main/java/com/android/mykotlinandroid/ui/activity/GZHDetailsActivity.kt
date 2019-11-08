@@ -14,6 +14,7 @@ import com.android.mykotlinandroid.mvp.response.DataX
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.jeremyliao.liveeventbus.LiveEventBus
 import kotlinx.android.synthetic.main.activity_gzhdetails.*
+import kotlinx.android.synthetic.main.base_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_layout.toolbar
 import kotlinx.android.synthetic.main.toolbar_layout.view.*
 
@@ -36,12 +37,20 @@ class GZHDetailsActivity : BaseMvpActivity<HomePresenter>() {
 
     }
 
+    override fun openLoading(): Boolean {
+        return true
+    }
+
+    override fun openRootLayout(): Boolean {
+        return true
+    }
 
     override fun initPresenter(): HomePresenter {
         return HomePresenter(this)
     }
 
     override fun initView() {
+        wempty_view.show(true)
         toolbar.title_text.text = intent.getStringExtra(ACTION_TITLE)
         id = intent.getIntExtra(ACTION_DATA_ID_KEY, 0)
 
@@ -60,7 +69,7 @@ class GZHDetailsActivity : BaseMvpActivity<HomePresenter>() {
 
     override fun initData() {
         presenter.gzhDetailsResponse.observe(this, Observer {
-            xPopup.dismiss()
+           wempty_view.hide()
             if (gzh_details_adapter == null) {
                 itemDataX.clear()
                 itemDataX.addAll(it.datas)//单独创建一个数据集避免点击事件index溢出

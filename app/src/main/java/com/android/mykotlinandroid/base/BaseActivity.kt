@@ -14,6 +14,8 @@ import android.os.Build
 import android.view.View
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+import com.android.mykotlinandroid.R
+import kotlinx.android.synthetic.main.base_activity_layout.*
 
 
 /**
@@ -23,12 +25,21 @@ import android.view.View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
  */
 abstract class BaseActivity : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setStatusBarTransparent()
-        setContentView(getIayoutId())
+
+        val view = layoutInflater.inflate(getIayoutId(), null)
+
+        var boolean = openRootLayout()
+        if(!boolean){// false  正常加载
+            setContentView(view)
+        }else{//使用根布局
+            setContentView(R.layout.base_activity_layout)
+            base_layout.addView(view)
+            if (openLoading()) {  //隐藏loading
+                wempty_view.hide()
+            }
+        }
 
         initView()
         initLoad()
@@ -45,25 +56,6 @@ abstract class BaseActivity : AppCompatActivity() {
         }
 
     }
-
-//    /**
-//     * 设置透明状态栏
-//     */
-//    private fun setStatusBarTransparent() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            val window = window
-//            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-//            window.decorView.systemUiVisibility =
-//                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-//            window.statusBarColor = Color.TRANSPARENT
-//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-//        }
-//
-//    }
-
-
     abstract fun initView()
     abstract fun initLoad()
     abstract fun initData()
@@ -71,23 +63,17 @@ abstract class BaseActivity : AppCompatActivity() {
     open protected fun setTitleName(): String {
         return ""
     }
-
-    protected fun initToolbar(@StringRes titleId: Int) {
-        initToolbar(getString(titleId))
+    //是否启用根布局   默认不启用
+    protected open fun openRootLayout(): Boolean {
+        return false
+    }
+    //是否启用Loading  默认不启用
+    protected open fun openLoading(): Boolean {
+        return false
     }
 
-    protected fun initToolbar(titleStr: String) {
-        toolbar.run {
-            title = titleStr
-            setSupportActionBar(this)
-            setNavigationOnClickListener {
-                finish()
-            }
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }
-    }
 
-    /* 处理activity多重跳转 */
+    /* 处理activity多重跳转========start */
     override fun startActivityForResult(intent: Intent?, requestCode: Int) {
         if (startActivitySelfCheck(intent!!)) {
             // startActivity 最终会调用 startActivityForResult
@@ -116,4 +102,5 @@ abstract class BaseActivity : AppCompatActivity() {
         mStartActivityTime = SystemClock.uptimeMillis()
         return result
     }
+    /* 处理activity多重跳转========stop */
 }

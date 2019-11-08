@@ -68,6 +68,6 @@ interface RetrofitServices {
 
     /* 项目类型列表详情 */
     @GET(HttpUrlConnect.GET_PROJECT_LIST)
-    fun detailsCategory(@Path("pageNum")pageNum: Int,@Query("cid")cid:Int): Observable<NetResult<List<ProjectViewpageResponse>>>
+    fun detailsCategory(@Path("pageNum")pageNum: Int,@Query("cid")cid:Int): Observable<NetResult<ProjectViewpageResponse>>
 }
 

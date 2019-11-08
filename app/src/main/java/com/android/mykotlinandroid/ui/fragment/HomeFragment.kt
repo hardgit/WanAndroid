@@ -17,6 +17,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.youth.banner.BannerConfig
 import kotlinx.android.synthetic.main.banner_layout.view.*
+import kotlinx.android.synthetic.main.base_fragment_layout.*
 import kotlinx.android.synthetic.main.fragment_layout_home.*
 
 
@@ -38,6 +39,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), Contract.View {
     }
 
     override fun initView() {
+        wempty_view.show(true)
         headerView = getHeaderBannerView()
         /*  初始化banner  */
         headerView.homeBanner.run {
@@ -58,10 +60,15 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), Contract.View {
         smart_refresh_layout.setEnableRefresh(false)
 
     }
+    override fun openLoading(): Boolean {
+        return true
+    }
 
+    override fun openRootLayout(): Boolean {
+        return true
+    }
 
     override fun initLoad() {
-//        xPopup.show()
 
     }
 
@@ -84,7 +91,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), Contract.View {
         })
         /* 首页文章列表 */
         presenter.homeListData.observe(this, Observer {
-
+            wempty_view.hide()
             if (homeListAdapter == null) {
                 itemDataX.clear()
                 itemDataX.addAll(it.datas)//单独创建一个数据集避免点击事件index溢出
@@ -108,7 +115,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), Contract.View {
                     }
                 }
                 /* 收藏文章点击事件 */
-                onItemChildClickListener = BaseQuickAdapter.OnItemChildClickListener { adapter, view, position ->
+                onItemChildClickListener = BaseQuickAdapter.OnItemChildClickListener { _, view, position ->
                     if (view.id == R.id.love_img) {
                         if (!itemDataX[position].collect) {
                             presenter.addCollect(position, itemDataX[position].id)

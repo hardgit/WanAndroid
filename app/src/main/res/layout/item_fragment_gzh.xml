@@ -9,6 +9,7 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:elevation="5dp"
             android:background="@drawable/fragment_item_background">
 
     <TextView

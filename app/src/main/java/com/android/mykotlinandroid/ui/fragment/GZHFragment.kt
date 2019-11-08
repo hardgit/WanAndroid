@@ -11,6 +11,7 @@ import com.android.mykotlinandroid.mvp.main.GZhPresenter
 import com.android.mykotlinandroid.mvp.response.GZHResponse
 import com.android.mykotlinandroid.ui.activity.GZHDetailsActivity
 import com.chad.library.adapter.base.BaseQuickAdapter
+import kotlinx.android.synthetic.main.base_fragment_layout.*
 import kotlinx.android.synthetic.main.fragment_layout_gzh.*
 
 /**
@@ -26,13 +27,22 @@ class GZHFragment : BaseMvpFragment<GZhPresenter>() {
         return GZhPresenter(activity)
     }
 
+    override fun openLoading(): Boolean {
+        return true
+    }
+
+    override fun openRootLayout(): Boolean {
+        return true
+    }
 
     override fun initLoad() {
       presenter.gzhList()
     }
 
     override fun initData() {
+
       presenter.response.observe(this,Observer {
+          wempty_view.hide()
           this.result = it
         adapter.setNewData(it)
       })
@@ -45,6 +55,7 @@ class GZHFragment : BaseMvpFragment<GZhPresenter>() {
     }
 
     override fun initView() {
+        wempty_view.show(true)
         gzh_recycler.layoutManager = LinearLayoutManager(activity)
         var linearSnapHelper = PagerSnapHelper() //每次滑动一个滑动  类似于viewPager 多行滑动-- LinearSnapHelper
         linearSnapHelper.attachToRecyclerView(gzh_recycler)

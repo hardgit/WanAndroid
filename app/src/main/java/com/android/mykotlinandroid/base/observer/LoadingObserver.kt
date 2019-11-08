@@ -25,7 +25,7 @@ abstract class LoadingObserver<E>(context: Context, var isloading :Boolean = tru
 
     override fun onSubscribe(d: Disposable) {
         if(isloading){
-            xPopup.show()
+//            xPopup.show()
         }
         super.onSubscribe(d)
     }

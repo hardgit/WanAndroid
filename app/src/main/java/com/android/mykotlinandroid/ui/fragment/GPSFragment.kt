@@ -8,6 +8,7 @@ import com.android.mykotlinandroid.base.BaseMvpFragment
 import com.android.mykotlinandroid.mvp.main.GpsPresenter
 import com.android.mykotlinandroid.mvp.response.Article
 import com.android.mykotlinandroid.utils.tablayout.VerticalTabLayout
+import kotlinx.android.synthetic.main.base_fragment_layout.*
 import kotlinx.android.synthetic.main.fragment_layout_gps.*
 
 /**
@@ -27,6 +28,14 @@ class GPSFragment : BaseMvpFragment<GpsPresenter>() {
         presenter.hotType()
     }
 
+    override fun openLoading(): Boolean {
+        return true
+    }
+
+    override fun openRootLayout(): Boolean {
+        return true
+    }
+
     override fun initData() {
 
         vertical_tablayout.setOnTabClickListener(object : VerticalTabLayout.OnTabClickListener {
@@ -39,6 +48,7 @@ class GPSFragment : BaseMvpFragment<GpsPresenter>() {
         })
 
         presenter.hotTypeMutableList.observe(this, Observer {
+            wempty_view.hide()
             var tabs = arrayListOf<String>()
             for (datas in it) {
                 tabs.add(datas.name)//类型数据集
@@ -62,7 +72,7 @@ class GPSFragment : BaseMvpFragment<GpsPresenter>() {
     }
 
     override fun initView() {
-
+      wempty_view.show(true)
     }
 
     override fun getLayoutResId(): Int {

@@ -2,6 +2,8 @@ package com.android.mykotlinandroid.mvp.main
 
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
+import com.android.mykotlinandroid.base.BaseActivity
+import com.android.mykotlinandroid.base.BaseFragment
 import com.android.mykotlinandroid.base.observer.BaseObserver
 import com.android.mykotlinandroid.base.BasePresenter
 import com.android.mykotlinandroid.base.net.exception.ResponseException
@@ -11,6 +13,8 @@ import com.android.mykotlinandroid.mvp.response.BannerResponse
 import com.android.mykotlinandroid.mvp.response.GZHDetailsResponse
 import com.android.mykotlinandroid.mvp.response.HomeListResponse
 import com.android.mykotlinandroid.mvp.response.ProjectViewpageResponse
+import com.android.mykotlinandroid.ui.fragment.HomeFragment
+import kotlinx.android.synthetic.main.base_fragment_layout.*
 
 /**
  * author : zf
@@ -35,7 +39,7 @@ class HomePresenter(var activity: FragmentActivity? = null):BasePresenter(){
     val gzhDetailsResponse = MutableLiveData<GZHDetailsResponse>()
 
     /* 公众号详情列表 */
-    val detailsCategoryResponse = MutableLiveData<List<ProjectViewpageResponse>>()
+    val detailsCategoryResponse = MutableLiveData<ProjectViewpageResponse>()
 
     /* 首页Banner数据集 */
     fun getHomeBanner(){
@@ -55,7 +59,6 @@ class HomePresenter(var activity: FragmentActivity? = null):BasePresenter(){
 
     /* 首页文章列表集 */
     fun getHomeListData(pageNum:Int){
-
         RequestManager.execute(activity,RetrofitManager.create(RetrofitServices::class.java).getHomeListData(pageNum),object:
             BaseObserver<HomeListResponse>(){
             override fun onSuccess(data: HomeListResponse) {
@@ -63,7 +66,7 @@ class HomePresenter(var activity: FragmentActivity? = null):BasePresenter(){
             }
 
             override fun onError(e: ResponseException) {
-                println(e.getErrorMessage())
+
             }
         })
     }
@@ -122,8 +125,8 @@ class HomePresenter(var activity: FragmentActivity? = null):BasePresenter(){
     fun detailsCategory(activity: FragmentActivity?,pageNum:Int,cid:Int) {
         activity?.let {
             RequestManager.execute(activity, RetrofitManager.create(RetrofitServices::class.java).detailsCategory(pageNum,cid), object :
-                LoadingObserver<List<ProjectViewpageResponse>>(it) {
-                override fun onSuccess(data: List<ProjectViewpageResponse>) {
+                LoadingObserver<ProjectViewpageResponse>(it) {
+                override fun onSuccess(data:ProjectViewpageResponse) {
                     detailsCategoryResponse.postValue(data)
                 }
 

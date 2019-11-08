@@ -16,4 +16,18 @@
         <!--ToolBar 字体颜色 -->
         <item name="titleTextColor">#ffffff</item>
     </style>
+
+    <attr name="WLoadingStyle" format="reference"/>
+
+    <declare-styleable name="WLoadingView">
+        <attr name="libx_loading_view_size" format="dimension"/>
+        <attr name="android:color"/>
+    </declare-styleable>
+
+    <declare-styleable name="WEmptyView">
+        <attr name="libx_show_loading" format="boolean"/>
+        <attr name="libx_title_text" format="string"/>
+        <attr name="libx_detail_text" format="string"/>
+        <attr name="libx_btn_text" format="string"/>
+    </declare-styleable>
 </resources>

@@ -116,8 +116,8 @@ class CrashHandler :Thread.UncaughtExceptionHandler {
             }
         }.start()
         //保存日志文件
-        val filePath = savePath + saveCrashInfo2File(ex)!!
-//        SharedPreferencesUtil.putShareprefer("error_file", filePath)
+        val filePath = savePath + saveCrashInfo2File(ex)
+        SharedPreferencesHelper.put("error_file", filePath)
         return true
     }
 

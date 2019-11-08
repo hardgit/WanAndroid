@@ -15,6 +15,7 @@ import com.android.mykotlinandroid.mvp.response.CollectData
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.jeremyliao.liveeventbus.LiveEventBus
 import kotlinx.android.synthetic.main.activity_my_collect.*
+import kotlinx.android.synthetic.main.base_activity_layout.*
 
 class MyCollectActivity : BaseMvpActivity<MyPresenter>() {
 
@@ -33,8 +34,16 @@ class MyCollectActivity : BaseMvpActivity<MyPresenter>() {
         return getString(R.string.my_collect)
     }
 
+    override fun openLoading(): Boolean {
+        return true
+    }
+
+    override fun openRootLayout(): Boolean {
+        return true
+    }
+
     override fun initView() {
-        xPopup.show()
+        wempty_view.show(true)
         collect_recycler.layoutManager = LinearLayoutManager(this)
         collect_recycler.setHasFixedSize(true)
         /* 避免嵌套卡顿 */
@@ -62,8 +71,8 @@ class MyCollectActivity : BaseMvpActivity<MyPresenter>() {
 
     override fun initData() {
         presenter.collectResponse.observe(this, Observer {
-            xPopup.dismiss()
-            if (flag && it.datas.size != 0) {
+            wempty_view.hide()
+            if (flag && it.datas.isNotEmpty()) {
                 pageNum++
             }
             if (collectionAdapter == null) {  //第一次加载

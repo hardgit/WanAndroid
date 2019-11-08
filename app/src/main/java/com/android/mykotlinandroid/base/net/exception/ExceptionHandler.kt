@@ -20,6 +20,7 @@ import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
 import retrofit2.HttpException
 import java.net.ConnectException
+import java.net.UnknownHostException
 
 class ExceptionHandler {
     companion object {
@@ -38,12 +39,14 @@ class ExceptionHandler {
                 responseException = ResponseException(e, PARSE_ERROR, "解析错误")
             } else if (e is ConnectException) {
                 responseException = ResponseException(e, NET_ERROR, "连接失败")
+            }else if (e is UnknownHostException) {
+                responseException = ResponseException(e, NET_ERROR, "请您打开网络")
             } else if (e is ConnectTimeoutException || e is java.net.SocketTimeoutException) {
                 responseException = ResponseException(e, TIMEOUT_ERROR, "网络连接超时")
             } else if (e is javax.net.ssl.SSLHandshakeException) {
                 responseException = ResponseException(e, SSL_ERROR, "证书验证失败")
             } else {
-                responseException = ResponseException(e, UNKNOWN_ERROR, "未知错误")
+                responseException = ResponseException(e, UNKNOWN_ERROR, "网络错误")
             }
             return responseException
         }
