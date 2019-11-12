@@ -1,5 +1,4 @@
 
-import com.shehuan.wanandroid.utils.sp.SpUtil
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.lang.StringBuilder
@@ -9,6 +8,7 @@ class SaveCookiesInterceptor : Interceptor {
         val originalResponse = chain.proceed(chain.request())
 
         val request = chain.request()
+
         if (request.url.toString().contains("login") || request.url.toString().contains("register")) {
             if (!originalResponse.headers("Set-Cookie").isEmpty()) {
                 val cookies = originalResponse.headers("Set-Cookie")
@@ -24,7 +24,6 @@ class SaveCookiesInterceptor : Interceptor {
                 }
             }
         }
-
         return originalResponse
     }
 }

@@ -10,7 +10,6 @@ import com.android.mykotlinandroid.mvp.response.CollectResponse
 import com.android.mykotlinandroid.mvp.response.UserResponse
 import com.android.mykotlinandroid.utils.ToastUtil
 import com.jeremyliao.liveeventbus.LiveEventBus
-import com.shehuan.wanandroid.utils.sp.SpUtil
 
 /**
  * author : zf

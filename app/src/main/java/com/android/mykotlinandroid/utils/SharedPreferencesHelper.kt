@@ -1,5 +1,3 @@
-package com.shehuan.wanandroid.utils.sp
-
 import android.content.Context
 import android.content.SharedPreferences
 import com.android.mykotlinandroid.MyApplication

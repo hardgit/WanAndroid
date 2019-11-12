@@ -1,6 +1,5 @@
 
 import com.android.mykotlinandroid.base.net.HttpBaseUrl
-import com.shehuan.wanandroid.base.net.interceptor.AddCookiesInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

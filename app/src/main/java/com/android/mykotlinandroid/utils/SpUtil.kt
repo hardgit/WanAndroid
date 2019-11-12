@@ -1,4 +1,3 @@
-package com.shehuan.wanandroid.utils.sp
 
 class SpUtil {
     companion object {

@@ -5,12 +5,9 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Environment
 import android.os.Looper
-import android.text.TextUtils
 import android.util.Log
 import android.widget.Toast
 import com.android.mykotlinandroid.BuildConfig
-import com.shehuan.wanandroid.utils.sp.SharedPreferencesHelper
-import com.shehuan.wanandroid.utils.sp.SpUtil
 import java.io.File
 import java.io.FileOutputStream
 import java.io.PrintWriter

@@ -9,7 +9,6 @@ import com.android.mykotlinandroid.adapter.MyFragmentPageAdapter
 import com.android.mykotlinandroid.base.BaseActivity
 import com.android.mykotlinandroid.ui.fragment.*
 import com.android.mykotlinandroid.utils.ToastUtil
-import com.shehuan.wanandroid.utils.sp.SpUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {

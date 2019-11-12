@@ -1,6 +1,3 @@
-package com.shehuan.wanandroid.base.net.interceptor
-
-import com.shehuan.wanandroid.utils.sp.SpUtil
 import okhttp3.Interceptor
 import okhttp3.Response
 

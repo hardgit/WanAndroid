@@ -6,12 +6,7 @@ import com.android.mykotlinandroid.base.observer.BaseObserver
 import com.android.mykotlinandroid.base.BasePresenter
 import com.android.mykotlinandroid.base.net.exception.ResponseException
 import com.android.mykotlinandroid.http.RetrofitServices
-import com.android.mykotlinandroid.mvp.response.CollectResponse
 import com.android.mykotlinandroid.mvp.response.ProjectCategoryResponse
-import com.android.mykotlinandroid.mvp.response.UserResponse
-import com.android.mykotlinandroid.utils.ToastUtil
-import com.jeremyliao.liveeventbus.LiveEventBus
-import com.shehuan.wanandroid.utils.sp.SpUtil
 
 /**
  * author : zf

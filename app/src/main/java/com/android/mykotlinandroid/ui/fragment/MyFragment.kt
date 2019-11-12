@@ -14,7 +14,6 @@ import com.android.mykotlinandroid.utils.ToastUtil
 import com.jeremyliao.liveeventbus.LiveEventBus
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.interfaces.OnConfirmListener
-import com.shehuan.wanandroid.utils.sp.SpUtil
 import kotlinx.android.synthetic.main.fragment_layout_my.*
 
 /**
