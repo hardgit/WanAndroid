@@ -1,5 +1,6 @@
 package com.android.mykotlinandroid.ui.fragment
 
+import android.text.Html
 import android.view.View
 import android.view.ViewGroup
 import com.android.mykotlinandroid.base.BaseMvpFragment
@@ -81,7 +82,7 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), Contract.View {
             var imgTexts = arrayListOf<String>()
             for (banners in it) {
                 imgs.add(banners.imagePath)
-                imgTexts.add(banners.title)
+                imgTexts.add(Html.fromHtml(banners.title).toString())
             }
             headerView.homeBanner.run {
                 setImages(imgs)
